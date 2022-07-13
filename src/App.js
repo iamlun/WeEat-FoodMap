@@ -1,24 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+// import L from "leaflet";
+// import { MapContainer, TileLayer, Marker, Popup, ZoomControl } from "react-leaflet";
+// import icons from "../src/assets/favicon.ico";
+import Map from './pages/Map';
+import { BrowserRouter as Router ,Route,Routes } from 'react-router-dom';
+import User from './components/User';
+import MyMap from './pages/MyMap';
+import Profile from './pages/Profile';
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <Router>
+    <div className="app">
+    <User />
+      <Routes>
+      <Route exact path='/' element={ <Map /> }></Route>
+      <Route path='/mymap' element={ <MyMap /> }></Route>
+      <Route exact path='/profile/:uid' element={ <Profile /> }></Route>
+      </Routes>
     </div>
+    </Router>
   );
 }
 
