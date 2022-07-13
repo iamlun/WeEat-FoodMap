@@ -341,7 +341,7 @@ const Post = () => {
         )
             return;
         }
-        fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${add}&key=AIzaSyD4mvFMeEbc9KwGaEHKmIheWCeiW4nmCKU`,{
+        fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${add}&key=${process.env.REACT_APP_GOOGLEKEY}`,{
             method:'GET',
         }).then((res)=>{
             return res.json();
