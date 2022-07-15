@@ -1,5 +1,5 @@
 # :world_map: WEEAT
-> A website that allows users to find nearby gourmet restaurants on map. [view demo >>](http://we-eat-473c4.web.app)
+> A website that allows users to find nearby gourmet restaurants on map. [Link >>](http://we-eat-473c4.web.app)
 
 
 ## :rocket: Introduction
