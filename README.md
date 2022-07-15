@@ -1,5 +1,6 @@
-# [WEEAT](http://we-eat-473c4.web.app)
-> A website that allows users to find nearby gourmet restaurants on map.
+# WEEAT
+> A website that allows users to find nearby gourmet restaurants on map. [view demo >>](http://we-eat-473c4.web.app)
+
 
 ## Introduction
 - Show the restaurant location on map.
@@ -9,25 +10,24 @@
 - Find nearby restaurants by location.
 
 ## Techniques
+- **Frameworks**
+    - React
 - **Front-End**
     - HTML
     - CSS
     - JavaScripts
-- **Frameworks**
-    - React
 - **Firebase**
     - Firestore
     - Storage
     - Authentication
     - Hosting
-- **Firebase Extensions**
     - Trigger Email
 - **Packages**
     - Redux
     - styled-components
     - material UI
     - sweetalert2
-- **Map**
+- **About Map**
     - OpenStreetMap
     - Mapbox
     - Leaflet
