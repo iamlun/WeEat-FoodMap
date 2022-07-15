@@ -34,10 +34,11 @@ const PostButton=styled.img`
     z-index: 101;
     cursor: pointer;
     object-fit: cover;
-    /* background-color: #82BBFB; */
     border-radius: 20%;
-    &:hover {
-        /* background-color: #0B3E79; */
+    @media screen and (max-width:750px) {
+        position: fixed;
+        bottom: 120px;
+        right: 10px;
     }
 `
 const PostInfo=styled.div`
@@ -57,6 +58,11 @@ const PostInfo=styled.div`
     font-size: 19px;
     letter-spacing: 1px;
     ${ props => (props.show? '':'display:none')};
+    @media screen and (max-width:750px) {
+        position: fixed;
+        bottom: 130px;
+        right: 65px;
+    }
 `
 const CloseButton=styled.img`
     width: 50px;
@@ -377,8 +383,20 @@ const Post = () => {
             })
             return;
         }
-        if(!file || !text || !category || !add || !position || !title){
-            console.log(position);
+        if(!position.lat || !position.lng){
+            Swal.fire({
+                title: '輸入地址後請按下右邊搜尋鍵確認',
+                width: 500,
+                color: 'rgba(27, 33, 29, 0.72)',
+                icon: 'warning',
+                confirmButtonColor: 'rgba(18, 190, 78, 0.65)',
+                backdrop: `
+                rgba(54, 66, 83, 0.9)
+                `
+              })
+                return;
+        }
+        if(!file || !text || !category || !add ||  !title){
           Swal.fire({
             title: '請確認資料填寫完整',
             width: 500,

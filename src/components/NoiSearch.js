@@ -118,7 +118,7 @@ const NoiSearch = () => {
     return (
         <Wrapper>
         <SearchWrapper>
-            <AddInput placeholder="Tainan" value={add} onChange={(e)=>setAdd(e.target.value)}>
+            <AddInput placeholder="Taipei" value={add} onChange={(e)=>setAdd(e.target.value)}>
             </AddInput>
             <SearchBtn src={search} onClick={()=>handleSearch()}></SearchBtn>
         </SearchWrapper>

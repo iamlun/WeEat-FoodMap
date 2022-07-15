@@ -1,12 +1,9 @@
 import styled from "styled-components";
 import user from "../assets/user.png";
-import { useAuth, googleSignIn, setProfile, getProfile, handleSignIn } from "../utils/firebase";
+import { useAuth, handleSignIn } from "../utils/firebase";
 import { Link } from "react-router-dom";
 import React from "react";
-import ReactDOM from "react-dom";
 import Swal from "sweetalert2";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import signin from "../assets/signin.jpeg";
 
 

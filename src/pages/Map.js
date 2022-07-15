@@ -33,10 +33,6 @@ import { ToggleButtonGroup, ToggleButton, createTheme, ThemeProvider, Tooltip } 
 //&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors
 //"https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
 
-{/* <TileLayer
-        attribution="© <a href='https://www.mapbox.com/about/maps/'>Mapbox</a> © <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a> <strong><a href='https://www.mapbox.com/map-feedback/' target='_blank'>Improve this map</a></strong>"
-        url="https://api.mapbox.com/styles/v1/ylun/cl4xwtpti002u14myf2u6z0b4/tiles/512/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoieWx1biIsImEiOiJjbDR4dzd5N2owN2hxM2NtbzV1Ymt6bDBlIn0.2UuijGmiciyDXCTpq1ko-g"
-        /> */}
 const theme = createTheme({
     palette: {
       primary: {
@@ -57,10 +53,11 @@ const LogOutButton=styled.img`
     z-index: 99;
     cursor: pointer;
     object-fit: cover;
-    /* background-color: #82BBFB; */
     border-radius: 5%;
-    &:hover {
-        /* background-color: #0B3E79; */
+    @media screen and (max-width:750px) {
+        position: fixed;
+        bottom: 305px;
+        right: 10px;
     }
 `
 const LogOutInfo=styled.div`
@@ -79,6 +76,11 @@ const LogOutInfo=styled.div`
     align-items: center;
     font-size: 18px;
     ${ props => (props.show? '':'display:none')};
+    @media screen and (max-width:750px) {
+        position: fixed;
+        bottom: 305px;
+        right: 65px;
+    }
 `
 const ShowPost=styled.div`
     width: 100%;
@@ -109,12 +111,8 @@ const PostWrapper=styled.div`
     opacity: 1;
     width: 80%;
     height: 750px;
-    /* background-color: black; */
     color:white;
     z-index: 200;
-    /* position: relative; */
-    /* top:50px;
-    right: 100px; */
 `
 const InfoWrapper=styled.div`
     width: 100%;
@@ -165,9 +163,6 @@ const PostDate=styled.div`
     font-size: 25px;
     font-weight: 900;
     color: antiquewhite;
-    /* position: relative;
-    right: 0;
-    top:50px; */
     position: relative;
     left: 300px;
     top:41px;
@@ -267,7 +262,6 @@ const NoteAddress=styled.div`
 const SaveButton=styled.img`
     width: 50px;
     height: 50px;
-    /* object-fit: cover; */
     border-radius: 5px;
     border: 0px;
     box-shadow: rgb(208 208 208) 0px 0px;
@@ -277,24 +271,6 @@ const SaveButton=styled.img`
     top:10%;
     right: 10px;
     z-index: 200;
-`
-const SaveInfo=styled.div`
-    width: 120px;
-    height: 40px;
-    font-size: 18px;
-    text-align: center;
-    background-color: white;
-    border-radius: 15px;
-    padding-top: 10px;
-    border: 0px;
-    letter-spacing: 1px;
-    color: gray;
-    position: absolute;
-    top:27%;
-    right: 10%;
-    /* z-index: 300; */
-    ${ props => (props.show? '':'display:none')}
-
 `
 const GpsButton=styled.img`
     width: 50px;
@@ -307,8 +283,10 @@ const GpsButton=styled.img`
     cursor: pointer;
     object-fit: cover;
     border-radius: 20%;
-    &:hover {
-        /* background-color: #0B3E79; */
+    @media screen and (max-width:750px) {
+        position: fixed;
+        bottom: 180px;
+        right: 10px;
     }
 `
 const GpsInfo=styled.div`
@@ -328,6 +306,11 @@ const GpsInfo=styled.div`
     align-items: center;
     font-size: 18px;
     ${ props => (props.show? '':'display:none')};
+    @media screen and (max-width:750px) {
+        position: fixed;
+        bottom: 190px;
+        right: 65px;
+    }
 `
 
 const NewPostButton=styled.img`
@@ -339,10 +322,11 @@ const NewPostButton=styled.img`
     z-index: 101;
     cursor: pointer;
     object-fit: cover;
-    /* background-color: #82BBFB; */
     border-radius: 20%;
-    &:hover {
-        /* background-color: #0B3E79; */
+    @media screen and (max-width:750px) {
+        position: fixed;
+        bottom: 120px;
+        right: 10px;
     }
 `
 const NewPostInfo=styled.div`
@@ -362,22 +346,20 @@ const NewPostInfo=styled.div`
     font-size: 19px;
     letter-spacing: 1px;
     ${ props => (props.show? '':'display:none')};
+    @media screen and (max-width:750px) {
+        position: fixed;
+        bottom: 130px;
+        right: 65px;
+    }
 `
 const HomeButton=styled.img`
     width: 50px;
-    height: 50px;
-    /* position: fixed;
-    bottom: 400px;
-    right: 20px; */
+    height: 50px; 
     z-index: 101;
     opacity: 1;
     cursor: pointer;
     object-fit: cover;
-    /* background-color: #82BBFB; */
     border-radius: 20%;
-    &:hover {
-        /* background-color: #0B3E79; */
-    }
 `
 const HomeLink=styled(Link)`
     width: 50px;
@@ -386,22 +368,35 @@ const HomeLink=styled(Link)`
     bottom: 380px;
     right: 20px;
     z-index: 101;
+    @media screen and (max-width:750px) {
+        position: fixed;
+        bottom: 240px;
+        right: 10px;
+    }
 `
 const MenuWrapper=styled.div`
     width: 390px;
     height: 49px;
-    background-color: white;
-    z-index: 100;
+    background-color: rgb(239 248 248 / 92%);
+    z-index: 101;
     border-radius: 2px;
     border: 0px;
     position:absolute;
     top:10px;
     left:5px;
+    @media screen and (max-width:750px){
+        width: 318px;
+        height: 40px;
+        position: fixed;
+        bottom:30px;
+        left: 20px;
+        top:auto;
+
+    }
 `
 const FollowButton=styled.img`
     width: 50px;
     height: 50px;
-    /* object-fit: cover; */
     border-radius: 5px;
     border: 0px;
     box-shadow: rgb(208 208 208) 0px 0px;
@@ -438,7 +433,14 @@ function Map() {
     const [myfollow,setMyfollow]=useState([]);
 
     const [reSetfollow,setReSetFollow]=useState(false);
-    // const [isFollowed,setIsFollowed]=useState(false);
+
+    //===RWD===;; ===initial state is laptop===
+    const [device,setDevice]=useState(true);
+    useEffect(()=>{
+        if(window.innerWidth<750){
+            setDevice(false);
+        }
+    },[])
     useEffect(()=>{
         if(flyto && position && map){
             map.flyTo([position.lat,position.lng],15,{
@@ -478,6 +480,11 @@ function Map() {
     async function successGPS(position){
         const lat=position.coords.latitude;
         const lng=position.coords.longitude;
+        //===GPS only available in TAIWAN===
+        if( lat>26 || lat < 19 || lng >122 || lng <120 ){
+            window.alert('GPS only available in TAIWAN');
+            return;
+        }
         const center={lat:lat,lng:lng};
         setGpsloading(false);
         dispatch(setPosition(center));
@@ -636,7 +643,7 @@ function Map() {
             if(result.isConfirmed){
                 handleSignIn()
                 .then(()=>{
-                    console.log('test');
+                    console.log('signin succ');
                 })
             }
         })
@@ -701,8 +708,6 @@ function Map() {
         })
         return temp;
     }
-    // console.log(isFollowed('123'));
-
     return (
         <div className="map_wrapper">
             { currentUser ? <NewPost /> :<NewPostButton src={newpostbtn}  onClick={()=>handleGoSignIn()} onMouseOver={()=>setShowNewPostInfo(true)} onMouseOut={()=>setShowNewPostInfo(false)}/>} 
@@ -748,7 +753,7 @@ function Map() {
             <GpsInfo show={showGpsInfo}>定位</GpsInfo>
             <MenuWrapper>
             <ThemeProvider theme={theme}>
-            <ToggleButtonGroup color="secondary" exclusive value={selectedOption} onChange={(e)=>setSelectedOption(e.target.value)} style={{zIndex:'101'}}>
+            <ToggleButtonGroup color="secondary" exclusive value={selectedOption} onChange={(e)=>setSelectedOption(e.target.value)} style={{zIndex:'101'}} size={device ? 'medium':'small'} >
                 <ToggleButton value="All" color="primary">All</ToggleButton>
                 <ToggleButton value="Coffee">咖啡廳</ToggleButton>
                 <ToggleButton value="Drink">手搖飲</ToggleButton>

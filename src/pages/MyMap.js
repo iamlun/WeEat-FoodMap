@@ -25,7 +25,6 @@ import NoiSearch from "../components/NoiSearch";
 import styled from "styled-components";
 import exit from "../assets/log-out.png";
 import NewPost from "../components/NewPost";
-import newpostbtn from "../assets/more.png";
 import { useNavigate } from "react-router-dom";
 import { ToggleButtonGroup, ToggleButton, createTheme, ThemeProvider, Tooltip } from "@mui/material";
 //&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors
@@ -50,10 +49,11 @@ const LogOutButton=styled.img`
     z-index: 99;
     cursor: pointer;
     object-fit: cover;
-    /* background-color: #82BBFB; */
     border-radius: 5%;
-    &:hover {
-        /* background-color: #0B3E79; */
+    @media screen and (max-width:750px) {
+        position: fixed;
+        bottom: 305px;
+        right: 10px;
     }
 `
 const LogOutInfo=styled.div`
@@ -72,6 +72,11 @@ const LogOutInfo=styled.div`
     align-items: center;
     font-size: 18px;
     ${ props => (props.show? '':'display:none')};
+    @media screen and (max-width:750px) {
+        position: fixed;
+        bottom: 305px;
+        right: 65px;
+    }
 `
 const ShowPost=styled.div`
     width: 100%;
@@ -102,12 +107,8 @@ const PostWrapper=styled.div`
     opacity: 1;
     width: 80%;
     height: 750px;
-    /* background-color: black; */
     color:white;
     z-index: 200;
-    /* position: relative; */
-    /* top:50px;
-    right: 100px; */
 `
 const InfoWrapper=styled.div`
     width: 100%;
@@ -158,9 +159,6 @@ const PostDate=styled.div`
     font-size: 25px;
     font-weight: 900;
     color: antiquewhite;
-    /* position: relative;
-    right: 0;
-    top:50px; */
     position: relative;
     left: 300px;
     top:41px;
@@ -260,7 +258,6 @@ const NoteAddress=styled.div`
 const SaveButton=styled.img`
     width: 50px;
     height: 50px;
-    /* object-fit: cover; */
     border-radius: 0px;
     border: 0px;
     box-shadow: rgb(208 208 208) 0px 0px;
@@ -270,24 +267,6 @@ const SaveButton=styled.img`
     top:10%;
     right: 10px;
     z-index: 200;
-`
-const SaveInfo=styled.div`
-    width: 120px;
-    height: 40px;
-    font-size: 18px;
-    text-align: center;
-    background-color: white;
-    border-radius: 15px;
-    padding-top: 10px;
-    border: 0px;
-    letter-spacing: 1px;
-    color: gray;
-    position: absolute;
-    top:27%;
-    right: 10%;
-    /* z-index: 300; */
-    ${ props => (props.show? '':'display:none')}
-
 `
 const GpsButton=styled.img`
     width: 50px;
@@ -300,8 +279,10 @@ const GpsButton=styled.img`
     cursor: pointer;
     object-fit: cover;
     border-radius: 20%;
-    &:hover {
-        /* background-color: #0B3E79; */
+    @media screen and (max-width:750px) {
+        position: fixed;
+        bottom: 180px;
+        right: 10px;
     }
 `
 const GpsInfo=styled.div`
@@ -321,24 +302,13 @@ const GpsInfo=styled.div`
     align-items: center;
     font-size: 18px;
     ${ props => (props.show? '':'display:none')};
-`
-
-const NewPostButton=styled.img`
-    width: 50px;
-    height: 50px;
-    position: fixed;
-    bottom: 260px;
-    right: 20px;
-    z-index: 101;
-    opacity: 0.5;
-    cursor: pointer;
-    object-fit: cover;
-    /* background-color: #82BBFB; */
-    border-radius: 20%;
-    &:hover {
-        /* background-color: #0B3E79; */
+    @media screen and (max-width:750px) {
+        position: fixed;
+        bottom: 190px;
+        right: 65px;
     }
 `
+
 const NewPostInfo=styled.div`
     width: 80px;
     height: 30px;
@@ -356,22 +326,20 @@ const NewPostInfo=styled.div`
     font-size: 19px;
     letter-spacing: 1px;
     ${ props => (props.show? '':'display:none')};
+    @media screen and (max-width:750px) {
+        position: fixed;
+        bottom: 130px;
+        right: 65px;
+    }
 `
 const HomeButton=styled.img`
     width: 50px;
     height: 50px;
-    /* position: fixed;
-    bottom: 400px;
-    right: 20px; */
     z-index: 101;
     opacity: 1;
     cursor: pointer;
     object-fit: cover;
-    /* background-color: #82BBFB; */
     border-radius: 20%;
-    &:hover {
-        /* background-color: #0B3E79; */
-    }
 `
 const HomeLink=styled(Link)`
     width: 50px;
@@ -380,18 +348,31 @@ const HomeLink=styled(Link)`
     bottom: 380px;
     right: 20px;
     z-index: 101;
+    @media screen and (max-width:750px) {
+        position: fixed;
+        bottom: 240px;
+        right: 10px;
+    }
 `
 
 const MenuWrapper=styled.div`
     width: 390px;
     height: 49px;
-    background-color: white;
+    background-color: rgb(239 248 248 / 92%);
     z-index: 100;
     border-radius: 2px;
     border: 0px;
     position:absolute;
     top:10px;
     left:5px;
+    @media screen and (max-width:750px){
+        width: 318px;
+        height: 40px;
+        position: fixed;
+        bottom:30px;
+        left: 20px;
+        top:auto;
+    }
 `
 
 function MyMap() {
@@ -417,9 +398,19 @@ function MyMap() {
     const dispatch=useDispatch();
     const [gpsloading,setGpsloading]=useState(false);
 
+    //===RWD===;; ===initial state is laptop===
+    const [device,setDevice]=useState(true);
+    useEffect(()=>{
+        if(window.innerWidth<750){
+            setDevice(false);
+        }
+    },[])
+
     //mymap
     const navigate=useNavigate();  
     const [reload,setReload]=useState(false);  
+
+
 
     useEffect(()=>{
         if(flyto && position && map){
@@ -429,12 +420,6 @@ function MyMap() {
             dispatch(offFlyto());
         }
     },[flyto])
-    // useEffect(()=>{
-    //     getAllPosts()
-    //     .then((res)=>{
-    //         setAllPosts(res.data);
-    //     })
-    // },[])
     useEffect(()=>{
         if(currentUser){
             getMySavePost(currentUser.uid)
@@ -446,7 +431,6 @@ function MyMap() {
             })
         }
     },[currentUser])
-    // console.log(allPosts);
     useEffect(()=>{
         if(reload){
             getMySavePost(currentUser.uid)
@@ -462,6 +446,11 @@ function MyMap() {
     async function successGPS(position){
         const lat=position.coords.latitude;
         const lng=position.coords.longitude;
+        //===GPS only available in TAIWAN===
+        if( lat>26 || lat < 19 || lng >122 || lng <120 ){
+            window.alert('GPS only available in TAIWAN');
+            return;
+        }
         const center={lat:lat,lng:lng};
         dispatch(setPosition(center));
         setZoom(17);
@@ -563,19 +552,6 @@ function MyMap() {
                 console.log('done');
             })
         })
-        // setMySavePost(currentUser.uid,id)
-        // .then((res)=>{
-        //     Swal.fire({
-        //         position: 'top-end',
-        //         icon: 'success',
-        //         title: '已加入個人地圖',
-        //         showConfirmButton: false,
-        //         timer: 1200
-        //     })
-        // })
-        // .catch((err)=>{
-        //     console.log(err.message);
-        // })
     }
     const SelectByCategory=(category)=>{
         if(category==='All'){
@@ -647,7 +623,7 @@ function MyMap() {
             <GpsInfo show={showGpsInfo}>定位</GpsInfo>
             <MenuWrapper>
             <ThemeProvider theme={theme}>
-            <ToggleButtonGroup color="secondary" exclusive value={selectedOption} onChange={(e)=>setSelectedOption(e.target.value)} style={{zIndex:'101'}}>
+            <ToggleButtonGroup color="secondary" exclusive value={selectedOption} onChange={(e)=>setSelectedOption(e.target.value)} style={{zIndex:'101'}} size={device ? 'medium':'small'}>
                 <ToggleButton value="All" color="primary">All</ToggleButton>
                 <ToggleButton value="Coffee">咖啡廳</ToggleButton>
                 <ToggleButton value="Drink">手搖飲</ToggleButton>
