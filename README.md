@@ -35,5 +35,3 @@
 - **3rd Party APIs**
     - Geocoding API
     - Nominatim
-
-![](1.mov)
