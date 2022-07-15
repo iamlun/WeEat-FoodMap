@@ -41,11 +41,7 @@ const storage=getStorage();
 const db=getFirestore();
 const provider=new GoogleAuthProvider();
 
-
-
-
 //user auth function
-
 function signup(email,password){
     return createUserWithEmailAndPassword(auth,email,password);
 }
@@ -69,15 +65,6 @@ async function getProfile(uid){
     const docSnap=await getDoc(docRef);
     return docSnap.data();
 }
-// async function setProfile(uid,name,file){
-//     const fileRef=ref(storage,`profile-image/${uid}.jpg`);
-//     const snapshot=await uploadBytes(fileRef,file);
-//     const photoURL=await getDownloadURL(fileRef);
-//     await setDoc(doc(db,"profile",`${uid}`),{
-//         name:name,
-//         photoURL:photoURL,
-//     });
-// }
 async function setProfile(uid,name,email,url){
     await setDoc(doc(db,"profile",`${uid}`),{
         name:name,
@@ -111,14 +98,6 @@ async function setMySavePost(uid,postid){
         save:arrayUnion(postid)
     })
 }
-// async function setMySavePost(uid,postid){
-//     const docRef=doc(db,"posts",`${postid}`);
-//     const docSnap=await getDoc(docRef);
-//     const newPostRef=doc(db,"mysave",`${uid}`);
-//     await setDoc(newPostRef,{
-
-//     });
-// }
 async function rmMySavePost(uid,postid){
     const docRef=doc(db,"profile",`${uid}`);
     await updateDoc(docRef,{
@@ -217,12 +196,6 @@ async function getPostByUid(uid){
     const results = snapshot.docs.map((doc)=>(doc.data()));
     return results;
 }
-// async function deletePostById(id){
-//     await deleteDoc(doc(db,"posts",`${id}`));
-//     await deleteDoc(doc(db,"spots",`${id}`));
-
-
-// }
 //spots
 async function getAllSpots(){
     const q=query(collection(db,"spots"));
@@ -254,15 +227,7 @@ async function getSpotByUid(uid){
 
     return results;
 }
-// async function setSpotByPostId(newSpotRef,lati,long){
-//     await setDoc(newSpotRef,{
-//         latitude:lati,
-//         longitude:long,
-//     });
-// }
-
 //google sign in and set profile 
-
 function googleSignIn(){
     return signInWithPopup(auth,provider);
 }
@@ -297,10 +262,7 @@ async function handleSignIn(){
         console.log(err.message);
     })
 }
-
-
 //follow
-
 async function followByUid(myemail,myuid,uid){
     const Ref=doc(db,"profile",`${myuid}`);
     await updateDoc(Ref,{
@@ -323,14 +285,11 @@ async function unfollowByUid(myemail,myuid,uid){
         followedByEmail:arrayRemove(myemail),
     })
 }
-
 async function getMyfollow(uid){
     const docRef=doc(db,"profile",`${uid}`);
     const docSnap=await getDoc(docRef);
 }
-
 //post notify send-email
-
 async function newPostNotify(uid,name,title){
     const docRef=doc(db,"profile",`${uid}`);
     const docSnap=await getDoc(docRef);
