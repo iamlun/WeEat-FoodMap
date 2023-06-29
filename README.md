@@ -37,9 +37,7 @@
     - Nominatim
     
 ## :rocket: Demo
-- This map show the restaurant labled from users.
-- The pop up window will show after clicking.
-- When you click the menu, the corresponding food category will be displayed.
+- Restaurants labled from users display on the map.
 
 
 
@@ -56,14 +54,13 @@ https://user-images.githubusercontent.com/100269372/179227069-49491f6a-1312-4ac4
 
 
 
-- Save your favorite restaurants to your personal map
+- Save your favorite restaurants to your personal map.
 
 
 
 https://user-images.githubusercontent.com/100269372/179226542-24581a1a-568c-4719-a404-670d80225e01.mov
 
 
-`For other functions, please check on the website.`
 
 
 
